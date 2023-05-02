@@ -11,21 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_05_02_082152) do
-  create_table "dor_groups", force: :cascade do |t|
-    t.integer "group_id", null: false
-    t.integer "dor_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["dor_id"], name: "index_dor_groups_on_dor_id"
-    t.index ["group_id"], name: "index_dor_groups_on_group_id"
-  end
-
-  create_table "dors", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -42,7 +27,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_082152) do
     t.index ["group_id"], name: "index_users_on_group_id"
   end
 
-  add_foreign_key "dor_groups", "dors"
-  add_foreign_key "dor_groups", "groups"
   add_foreign_key "users", "groups"
 end
