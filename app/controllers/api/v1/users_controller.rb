@@ -1,8 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-    def index
-        render jsonapi: User.all
-    end
-
+  
     def show
         @user = User.find(params[:id])
         render jsonapi: @user
@@ -16,7 +13,7 @@ class Api::V1::UsersController < ApplicationController
             render json: {data: 'gagal'}
         end
     end
-
+ 
     def update
         # binding.pry
         @user = User.find(params[:id])
