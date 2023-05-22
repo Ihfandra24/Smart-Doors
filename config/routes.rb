@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :users
       resources :groups
       resources :gates
+      resources :gate_groups
     end
   end
 end
