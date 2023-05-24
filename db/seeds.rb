@@ -9,3 +9,6 @@ GateGroup.find_or_create_by(gate_id: 1, group_id: 2)
 
 Gate.find_or_create_by(name: "IT Doors")
 Gate.find_or_create_by(name: "Marketing Doors")
+
+
+# rfid string cant double

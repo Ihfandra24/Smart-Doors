@@ -2,12 +2,12 @@ class User < ApplicationRecord
     has_secure_password
 
     belongs_to :group
-    #validates_associated :group
-
-    #validates :email, :phone, uniqueness: true, presence: true
-    #validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, length: {maximum: 12, minimum: 5}, presence: true
-    #validates :phone, numericality: { only_integer: true, message: "only allows Number" }, length: {maximum: 12, minimum: 5}, presence: false
-    #validates :name, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, presence: true
+    
+    validates :email, :phone, uniqueness: true, presence: true
+    validates :email, format:  {with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/}, presence: true
+    validates :phone, numericality: { only_integer: true, message: "only allows Number" }, presence: true
+    validates :name, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, presence: true
+    validates :rfid, uniqueness: true
     
    before_create :set_expired_at
 
