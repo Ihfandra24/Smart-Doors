@@ -1,4 +1,5 @@
 class Api::V1::GatesController < ApplicationController
+    before_action :check_access_token, only: [:create, :update, :destroy]
     def index
         render jsonapi: Gate.all
     end

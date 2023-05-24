@@ -1,4 +1,5 @@
 class Api::V1::GroupsController < ApplicationController
+    before_action :check_access_token, only: [:create, :update, :destroy]
     def index
         render jsonapi: Group.all
     end

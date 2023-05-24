@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
     before_action :login, only: [:update]
-    before_action :check_access_token, except: :login
+    before_action :check_access_token, only: [:create, :update, :destroy]
 
     def index
         render jsonapi: User.all
