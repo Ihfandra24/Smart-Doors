@@ -49,3 +49,4 @@ end
 
 gem 'jsonapi.rb'
 
+gem 'bcrypt', '~> 3.1.18'

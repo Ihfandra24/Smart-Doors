@@ -1,11 +1,11 @@
 Group.find_or_create_by(name: "Marketing")
-Group.find_or_create_by(name: "IT" )
+Group.find_or_create_by(name: "IT")
 Group.find_or_create_by(name: "Gudang")
 
-User.find_or_create_by(name: "Ihfazriel", group_id: Group.first.id, email: "soko@gmail.com", phone: "093820398" )
-User.find_or_create_by(name: "Yoyo", group_id: Group.last.id, email: "aoks@gmail.com", phone: "091209102")
+User.find_or_create_by(name: "Ihfazriel", group_id: Group.first.id, email: "soko@gmail.com", password_digest: "12345", phone: "093820398")
+User.find_or_create_by(name: "Yoyo", group_id: Group.last.id, email: "aoks@gmail.com",password_digest: "2345", phone: "091209102")
+
+GateGroup.find_or_create_by(gate_id: 1, group_id: 2)
 
 Gate.find_or_create_by(name: "IT Doors")
 Gate.find_or_create_by(name: "Marketing Doors")
-
-GateGroup.find_or_create_by(gate_id: 1, group_id: 2)

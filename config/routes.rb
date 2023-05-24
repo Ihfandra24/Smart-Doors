@@ -5,6 +5,4 @@ Rails.application.routes.draw do
       resources :groups
       resources :gates
       resources :gate_groups
-    end
-  end
-end
+      post "users/login", to: "users#login"
