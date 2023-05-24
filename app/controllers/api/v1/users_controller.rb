@@ -39,9 +39,9 @@ class Api::V1::UsersController < ApplicationController
 
     def login
         user = User.find_by(email: params[:user][:email])
-        if user && user.authenticate(params[:user][:password_digest])
+        if user && user.authenticate(params[:user][:password])
             @current_user = user
-            user.generate_access_token if user.expired_at < DateTime.now
+            user.generate_access_token if user.expired_at < DateTime.now rescue binding.pry
             render jsonapi: user
         else
             render json: { status: 401, message: 'Failed to log in' }
@@ -51,7 +51,7 @@ class Api::V1::UsersController < ApplicationController
     
     private 
     def param_user
-      params.require(:user).permit(:name, :email, :password_digest, :phone, :group_id)
+      params.require(:user).permit(:name, :email, :password, :phone, :group_id)
     end 
 
 end

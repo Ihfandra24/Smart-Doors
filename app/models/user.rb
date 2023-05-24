@@ -10,10 +10,11 @@ class User < ApplicationRecord
     #validates :name, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, presence: true
     
    # before_validation :ensure_name_has_a_value
+   before_create :set_expired_at
 
     def generate_access_token
         update(access_token: SecureRandom.urlsafe_base64(30),
-               expired_at: DateTime.current + 1.hour)
+               expired_at: DateTime.current + 5.minutes)
     end
 
     private
@@ -23,5 +24,9 @@ class User < ApplicationRecord
             puts "*" * 100
             
         end
+    end
+
+    def set_expired_at
+      self.expired_at = DateTime.now
     end
 end
