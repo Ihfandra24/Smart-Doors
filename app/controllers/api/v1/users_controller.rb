@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
     before_action :login, only: [:update]
+
     def index
         render jsonapi: User.all
     end
@@ -19,7 +20,6 @@ class Api::V1::UsersController < ApplicationController
     end
  
     def update
-        # binding.pry
         @user = User.find(params[:id])
         if @user.update(param_user)
           render json: {data: 'Berhasil update'}
@@ -38,12 +38,10 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def login
-        # binding.pry
         user = User.find_by(email: params[:user][:email])
-    
-        if user && user.authenticate(params[:user][:password_digest]) #&& user.expired_at < DateTime.now
+        if user && user.authenticate(params[:user][:password_digest])
             @current_user = user
-            # user.generate_access_token
+            user.generate_access_token if user.expired_at < DateTime.now
             render jsonapi: user
         else
             render json: { status: 401, message: 'Failed to log in' }

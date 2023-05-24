@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_12_043533) do
-  create_table "admins", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2023_05_23_094953) do
   create_table "gate_groups", force: :cascade do |t|
     t.integer "gate_id", null: false
     t.integer "group_id", null: false
@@ -47,9 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_043533) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "group_id", null: false
-    t.string "password_digest"
-    t.string "access_token"
-    t.datetime "expired_at", default: "2023-05-19 06:15:58"
+    t.string "password_digest", null: false
     t.index ["group_id"], name: "index_users_on_group_id"
   end
 
