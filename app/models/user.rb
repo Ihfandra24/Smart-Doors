@@ -9,7 +9,6 @@ class User < ApplicationRecord
     #validates :phone, numericality: { only_integer: true, message: "only allows Number" }, length: {maximum: 12, minimum: 5}, presence: false
     #validates :name, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, presence: true
     
-   # before_validation :ensure_name_has_a_value
    before_create :set_expired_at
 
     def generate_access_token
@@ -18,13 +17,6 @@ class User < ApplicationRecord
     end
 
     private
-    def ensure_name_has_a_value
-        if name.nil?
-            self.name = name unless name.blank?
-            puts "*" * 100
-            
-        end
-    end
 
     def set_expired_at
       self.expired_at = DateTime.now
