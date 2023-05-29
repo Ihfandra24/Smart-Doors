@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_24_093832) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_25_013057) do
   create_table "gate_groups", force: :cascade do |t|
     t.integer "gate_id", null: false
     t.integer "group_id", null: false
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_093832) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "rfid"
   end
 
   create_table "groups", force: :cascade do |t|
