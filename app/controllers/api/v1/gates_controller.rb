@@ -36,10 +36,16 @@ class Api::V1::GatesController < ApplicationController
             render json: {data: 'Gagal Hapus'}
         end
     end
+
+    def access
+        gate = Gate.rfid_access_from_to(params[:gate][:user_from],params[:gate][:gate_to]).present?
+        render json: {data: gate}
+    end
+    
     
     private 
     def param_gate
-      params.require(:gate).permit(:name)
+      params.require(:gate).permit(:name, :gate_to, :user_from)
     end 
 
 end
