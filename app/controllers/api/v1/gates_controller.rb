@@ -39,7 +39,8 @@ class Api::V1::GatesController < ApplicationController
 
     def access
         gate = Gate.rfid_access_from_to(params[:gate][:user_from],params[:gate][:gate_to]).present?
-        render json: {data: gate}
+        return render json: {data: gate} if gate
+        head :unauthorized
     end
     
     
