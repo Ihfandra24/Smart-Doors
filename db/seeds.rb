@@ -20,7 +20,3 @@ GateGroup.find_or_create_by(gate_id: gt2.id, group_id: gr1.id)
 GateGroup.find_or_create_by(gate_id: gt2.id, group_id: gr4.id)
 GateGroup.find_or_create_by(gate_id: gt1.id, group_id: gr4.id)
 GateGroup.find_or_create_by(gate_id: gt3.id, group_id: gr4.id)
-
-
-
-# rfid string cant double
