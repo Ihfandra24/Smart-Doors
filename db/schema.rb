@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_25_013057) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_03_042042) do
   create_table "gate_groups", force: :cascade do |t|
     t.integer "gate_id", null: false
     t.integer "group_id", null: false
@@ -44,6 +44,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_25_013057) do
     t.datetime "expired_at"
     t.string "access_token"
     t.string "rfid"
+    t.string "UID"
+    t.string "NIK"
+    t.index ["NIK"], name: "index_users_on_NIK", unique: true
+    t.index ["UID"], name: "index_users_on_UID", unique: true
     t.index ["group_id"], name: "index_users_on_group_id"
   end
 
